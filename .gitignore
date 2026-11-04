@@ -1,0 +1,12 @@
+# 秘密值不入倉庫（沿用你 .env / .env.example 的習慣）
+.env
+.env.local
+.env.production
+
+node_modules/
+.next/
+.vercel/
+
+# log 與暫存
+logs/
+*.log
