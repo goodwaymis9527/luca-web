@@ -10,3 +10,6 @@ node_modules/
 # log 與暫存
 logs/
 *.log
+
+.vercel
+.neon

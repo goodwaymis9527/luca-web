@@ -1,0 +1,22 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "strata": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Strata RTX 5090",
+      "options": {
+        "baseURL": "http://10.10.0.85:8088/v1",
+        "apiKey": "sk-strata-kJsNavdUFzX0i3--vAwWymIo4uAwyGRu"
+      },
+      "models": {
+        "qwen3.8-flash-next-iq2_xs": {
+          "name": "Qwen 3.8 Flash Next IQ2 XS",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        }
+      }
+    }
+  }
+}

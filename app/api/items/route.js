@@ -1,20 +1,17 @@
 import { NextResponse } from 'next/server';
-import { addItem, ensureSchema, listItems } from '../../../lib/db.js';
+import { addItem, listItems } from '../../../lib/db.js';
 
-// pg 只能跑 Node runtime；edge runtime 沒有 Node 的 net 模組
+// 保留 Node runtime（原本是給 pg 的 net 模組用）；@neondatabase/serverless 的 HTTP transport 在 edge 也能跑
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function GET(req) {
-  await ensureSchema();
   const url = new URL(req.url);
   const limit = Number(url.searchParams.get('limit')) || 50;
   return NextResponse.json(await listItems(limit));
 }
 
 export async function POST(req) {
-  await ensureSchema();
-
   // 表單送出是 form-encoded，fetch 送出是 JSON，兩種都支援
   let title = '';
   let body = '';

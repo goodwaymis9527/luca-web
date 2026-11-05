@@ -28,7 +28,7 @@ export default async function Page() {
             <td>{item.id}</td>
             <td>{item.title}</td>
             <td>{item.body}</td>
-            <td>{item.created_at}</td>
+            <td>{new Date(item.created_at).toISOString()}</td>
           </tr>
         ))}
       </table>
@@ -36,6 +36,8 @@ export default async function Page() {
       {/* 純表單 POST，不需要 client JS；route handler 處理完會 redirect 回本页 */}
       <form method="post" action="/api/items">
         <input name="title" placeholder="標題" required maxLength="120" />
+        {/* route handler 已支援 form 的 body 欄位，之前表單沒送出所以內文永遠是空字串 */}
+        <textarea name="body" placeholder="內文" rows="4" maxLength="2000"></textarea>
         <button type="submit">新增</button>
       </form>
     </main>
